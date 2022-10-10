@@ -45,7 +45,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Common Commands
+## Nest Commands
 
 ```bash
 # Create Controller
@@ -92,6 +92,17 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+## Common CURL Commands
+
+```bash
+# Login
+$ curl -X POST http://localhost:3000/accounts/login -d '{"username": "sbarkaat", "password": "password123"}' -H "Content-Type: application/json"
+
+# Get Users
+$ curl http://localhost:3000/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNiYXJrYWF0Iiwic3ViIjoxLCJpYXQiOjE2NjAxOTEyNjQsImV4cCI6MTY2MDIwNzI2NH0.9AcnXPlB7Buqfr1G2h-oz-1l3FOs1iPtKEUYcGLO0TY"
+
 ```
 
 ## Support
