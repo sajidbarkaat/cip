@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  mssql:
+    container_name: 'mssql'
+    image:
+      mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssword12345
+    ports:
+      - '1433:1433'
+    volumes:
+      - c:\SHOZ\Docker\mssql\sqlsystem:/var/opt/mssql/data
+      - c:\SHOZ\Docker\mssql\sqluser:/var/opt/mssql/sqlserver
+      - c:\SHOZ\Docker\mssql\sqlbackups:/var/opt/mssql/backups

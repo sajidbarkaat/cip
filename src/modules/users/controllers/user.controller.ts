@@ -3,11 +3,14 @@ import { UsersService } from '../services/users.service';
 import { CreateUserDto } from '../dtos/create-user.dto'
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('users')
+@Controller('user')
+@ApiTags('user')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
