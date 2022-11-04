@@ -68,17 +68,29 @@ $ npx nest generate module ./path/module-name --flat
 
 ```
 
-## Prisma Commands
+## TypeORM CLI Commands
 
 ```bash
-# Initialize Prisma
-$ npx prisma init
+# Create new migration
+$ typeorm migration:create ./path-to-migrations-dir/migration-name
 
-# Create Migration
-$ npx prisma migrate dev --name "init"
+# Run Migration
+$ typeorm migration:run
 
-# Run Seed
-$ npx prisma db seed
+# If you need to specify a timestamp for the migration name, use the -t (alias for --timestamp) and pass the timestamp (should be a non-negative number)
+$ typeorm -t <specific-timestamp> migration:{create|generate}
+
+# To synchronize a database schema use
+$ typeorm schema:sync
+
+# Drop Schema
+$ typeorm schema:drop
+
+# To check what sql queries schema:sync is going to run use
+$ typeorm schema:log
+
+# To show all migrations and whether they've been run or not use following command:
+$ typeorm migration:show
 ```
 
 ## Test

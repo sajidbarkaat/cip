@@ -14,7 +14,7 @@ export class UsersService {
     private dataSource: DataSource,
   ) {}
   async create(createUserDto: CreateUserDto) {
-    return this.usersRepository.create(createUserDto);
+    return this.usersRepository.save(createUserDto);
   }
 
   findOne(findUserDto: FindUserDto) {
@@ -24,10 +24,6 @@ export class UsersService {
   findAll() {
     return this.usersRepository.find();
   }
-
-  // findOne(id: number) {
-  //   return this.prismaService.user.findFirst({where: { id: id}});
-  // }
 
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
