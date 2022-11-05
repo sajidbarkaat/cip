@@ -16,9 +16,9 @@ export class AccountsController {
   @Public()
   @Post('signup')
   @ApiOkResponse({ type: RegisteredUserDto})
-  async signup(@Body() createUserDto: CreateUserDto): Promise<RegisteredUserDto> {    
-    return this.userService.create(createUserDto);    
-  }  
+  async signup(@Body() createUserDto: CreateUserDto): Promise<RegisteredUserDto> {
+    return this.userService.create(createUserDto);
+  }
 
   @Public()
   @UseGuards(LocalAuthGuard)

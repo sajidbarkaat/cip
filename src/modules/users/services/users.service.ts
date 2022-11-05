@@ -5,16 +5,20 @@ import { CreateUserDto } from '../dtos/create-user.dto';
 import { FindUserDto } from '../dtos/find-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { User } from '../entities/user.entity';
+import { InjectMapper } from '@automapper/nestjs';
+import { Mapper } from '@automapper/core';
+import { RegisteredUserDto } from '../dtos/registered-user.dto';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>,
-    private dataSource: DataSource,
+    private readonly usersRepository: Repository<User>,
+    private readonly dataSource: DataSource,
+    @InjectMapper() private readonly classMapper: Mapper
   ) {}
-  async create(createUserDto: CreateUserDto) {
-    return this.usersRepository.save(createUserDto);
+  async create(createUserDto: CreateUserDto): Promise<RegisteredUserDto | undefined> {
+    return this.classMapper.mapAsync(await this.usersRepository.save(createUserDto), User, RegisteredUserDto);    
   }
 
   findOne(findUserDto: FindUserDto) {
@@ -52,3 +56,4 @@ export class UsersService {
     }
   }
 }
+
