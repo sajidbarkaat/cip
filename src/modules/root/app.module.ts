@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import dbConfig from './db.config'; 
 import { AutomapperModule } from '@automapper/nestjs';
 import {classes} from '@automapper/classes';
+import { TrucksModule } from '../trucks/trucks.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import {classes} from '@automapper/classes';
     }),
     UsersModule,
     AuthModule,
+    TrucksModule
   ],
   controllers: [AppController],
   providers: [AppService],
